@@ -60,6 +60,14 @@ class FileManager {
             throw err
         })
     }
+
+    createDir (dirName) {
+        let dirPath = path.join(this.cwd, dirName)
+        if(fs.existsSync(dirPath) && fs.statSync(dirPath).isDirectory()){
+            throw new Error('dir exist with same name')
+        }
+        fs.mkdirSync(dirPath)
+    }
 }
 
 module.exports = FileManager

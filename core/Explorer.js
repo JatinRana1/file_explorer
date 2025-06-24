@@ -18,6 +18,10 @@ class Explorer {
 
             try {
                 switch (inputArr[0]) {
+                    case '--help':
+                        this.listAllCommands()
+                        break
+
                     case 'ls':
                         this.fileManager.list(process.cwd())
                         break
@@ -34,6 +38,13 @@ class Explorer {
                     case 'touch': 
                         this.fileManager.createFile(inputArr[1])
                         break
+
+                    case 'mkdir' :
+                        this.fileManager.createDir(inputArr[1])
+                        break
+                    
+                    default :
+                        console.log('Invalid Command\nuse --help to list all commands')
                 }
 
                 this.ui.showPrompt()
@@ -44,6 +55,12 @@ class Explorer {
         })
     }
 
+    listAllCommands () {
+        console.log('"ls" to list all directories & file')
+        console.log('"cd" to change directory')
+        console.log('"cat" to read from file')
+        console.log('"touch" to create file')
+    }
 }
 
 module.exports = Explorer
