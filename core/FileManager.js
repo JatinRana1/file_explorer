@@ -50,6 +50,16 @@ class FileManager {
         
         console.log(content)
     }
+
+    createFile (fileName) {
+        let filePath = path.join(this.cwd, fileName)
+        if(fs.existsSync(filePath) && fs.statSync(filePath).isFile()){
+            throw new Error('file exist with same name')
+        }
+        fs.writeFileSync(fileName, '' ,(err)=>{
+            throw err
+        })
+    }
 }
 
 module.exports = FileManager

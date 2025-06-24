@@ -31,6 +31,9 @@ class Explorer {
                         this.fileManager.readFile(inputArr[1])
                         break
 
+                    case 'touch': 
+                        this.fileManager.createFile(inputArr[1])
+                        break
                 }
 
                 this.ui.showPrompt()
